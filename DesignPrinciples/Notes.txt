@@ -1,0 +1,22 @@
+DESIGN PATTERNS:
+----------------
+A design pattern is a reusable solution to a commonly occurring problem in software design. 
+It provides a structured approach to solving design challenges in a way that improves code maintainability, scalability, and reusability.
+
+1.STRATEGY DESIGN PATTERN:
+--------------------------
+1.It helps you to change the behaviour of a class at runtime dynamically without changing the class.
+2.It also helps to reduce the duplicate code.
+   --> Suppose you have one class and and it has 10 subclasses.
+       all these subclasses has diffent implementation for particular method parent so each of the subclass will override the  parent method.
+       suppose 5 subclasse have same implement but diffrent from the parent,still each 5 subclass will have to override parent method and have to write same code 5 time.due to which we will have 
+       code duplicacy.Strategy design Pattern solve this.
+
+2.OBSERVABLE/OBERVER DESIGN PATTERN:
+-----------------------------------
+1.We go for this patter when we have requirement that we have subject and others are suscribing to this subject called observer.
+2.Oberver should suscribe to this Observable or Suject.
+3.Observable will notify all the Observers on any modiciation of the property to this observers have suscribed.
+Example:
+   Stock Update/Notification to all the suscriber.
+

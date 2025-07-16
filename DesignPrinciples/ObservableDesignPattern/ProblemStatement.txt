@@ -1,0 +1,51 @@
+PROBLEM STATEMENT:
+------------------
+You are developing a stock price alert system for an investment platform.
+Users should be able to subscribe to stock price updates and receive notifications when the price changes.
+The system should allow multiple users to track the same stock, and they should be notified whenever its price is updated.
+
+REQUIREMENTS:
+-------------
+The system should allow users to subscribe and unsubscribe from stock price alerts dynamically.
+Whenever the stock price changes, all subscribed users should be notified automatically.
+Adding new types of subscribers (e.g., SMS alerts, Email alerts) should be possible without modifying existing code (follows the Open/Closed Principle).
+
+
+Test Cases:
+-----------
+1. Test Single Observer Subscription
+
+Given a Stock subject with "AAPL" stock
+And an EmailObserver subscribed to it
+When the stock price is updated to 150.0
+Then the EmailObserver should receive a notification:
+📩 "Email Alert: Stock AAPL updated to 150.0"
+
+2. Test Multiple Observers for the Same Stock
+
+Given a Stock subject with "TSLA" stock
+And an EmailObserver and SMSObserver subscribed to it
+When the stock price is updated to 720.5
+Then both observers should receive notifications:
+📩 "Email Alert: Stock TSLA updated to 720.5"
+📲 "SMS Alert: Stock TSLA updated to 720.5"
+
+3. Test Unsubscribing an Observer
+
+Given a Stock subject with "GOOGL" stock
+And an EmailObserver and SMSObserver subscribed to it
+When the SMSObserver unsubscribes
+And the stock price updates to 2800.0
+Then only the EmailObserver should receive a notification:
+📩 "Email Alert: Stock GOOGL updated to 2800.0"
+🔴 SMSObserver should NOT receive any notification.
+
+4. Test Adding a New Observer Type Without Modifying Existing Code
+
+Given a Stock subject with "MSFT" stock
+And a new observer type (e.g., PushNotificationObserver) is introduced without modifying existing Stock/Observer classes
+When a user subscribes via push notification
+And the stock price updates to 305.0
+Then the new observer should receive a notification:
+📲 "Push Notification: MSFT stock updated to 305.0"
+

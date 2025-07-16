@@ -1,0 +1,43 @@
+PROBLEM STATEMENT:
+-------------------
+You are building a payment system for an e-commerce website. 
+The system should support multiple payment methods like Credit Card, PayPal, and UPI. 
+The payment method should be selected at runtime, and the system should be flexible enough to add new payment methods in the future without modifying existing code.
+
+REQUIREMENTS:
+-------------
+The system should allow users to choose a payment method dynamically.
+Adding a new payment method should not require modifying existing payment logic.
+The solution should follow the Open/Closed Principle (OCP) by enabling extension without modification.
+
+
+
+
+Test Cases:
+1.Test Credit Card Payment
+
+Given a CreditCardPayment strategy
+When a user pays 100.0
+Then the system should confirm "Paid 100.0 using Credit Card."
+
+2.Test PayPal Payment
+
+Given a PayPalPayment strategy
+When a user pays 200.0
+Then the system should confirm "Paid 200.0 using PayPal."
+
+3.Test UPI Payment
+
+Given a UPIPayment strategy
+When a user pays 150.0
+Then the system should confirm "Paid 150.0 using UPI."
+
+4.Test Dynamic Strategy Switching
+
+Given a PaymentContext with CreditCardPayment
+When a user pays 300.0
+Then the system should confirm "Paid 300.0 using Credit Card."
+When the strategy is changed to PayPalPayment and the user pays 500.0
+Then the system should confirm "Paid 500.0 using PayPal."
+When the strategy is changed to UPIPayment and the user pays 250.0
+Then the system should confirm "Paid 250.0 using UPI."

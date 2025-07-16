@@ -1,0 +1,31 @@
+LLD Question: Design a Task Management System
+---------------------------------------------
+
+PROBLEM STATEMENT:
+------------------
+Design a Task Management System where:
+
+1. A Manager can create a task and assign it to one or more Users.
+
+2. A User can update the status of a task to "Not Started," "Pending," or "Completed."
+
+3. A Manager can view all tasks they have assigned.
+
+4. A User can view details of a task, including who assigned it.
+
+5. The system should be thread-safe to handle concurrent task updates.
+
+Follow-up Questions:
+---------------------
+Entities & Relationships
+  -->Identify the main entities and their relationships.
+Database Schema
+  -->How would you design tables to store managers, users, tasks, and their statuses?
+API Endpoints
+  -->Define RESTful APIs for creating, updating, and retrieving tasks.
+Concurrency & Thread Safety
+  -->How will you ensure thread safety when multiple users update a task simultaneously?
+Scaling & Optimization
+  -->How would you scale this system to handle thousands of concurrent users?
+
+  

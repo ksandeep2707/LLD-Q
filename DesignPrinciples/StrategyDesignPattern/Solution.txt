@@ -1,0 +1,20 @@
+SOLUTION:
+--------
+FLOW:
+-----
+Payment methods will be shown to user-->User will select the payment method-->Enter amount-->System will make payment accordinly.
+
+1. REQUIREMENT GATHERING:
+-------------------------
+a.User shoould be given mulitple options to make payments.
+b.User should be able to decide at runtime what method to select and based on that the sustem make payment accordinly.
+c.System should support payment methods like UPI, CreditCard, Paypal.And it can extended easily without change the sturcture of the existing code.
+
+2.OBJECT DETECTION:
+------------------
+1.Payment
+2.PaymentStrategy Interface
+3.UPI
+4.CreditCard
+5.Paypal
+2.Main (To test our system)

@@ -1,0 +1,20 @@
+SOLUTION:
+--------
+FLOW:
+----
+Will have one Task Board-->Manager can create task ans assign it to user-->User should be able to see who assigned it-->MAnger can seel all the task which he as created.
+
+REQUIREMENT GATHERING:
+----------------------
+1.We need one Task Board where the Task can be created.
+2.Manager should be able to create the task.
+3.Each task should have the assigned by and assignee
+4.Manager should be able to create task and assign it to user/Users.
+5.User should be able to see how has assigned the task to him.
+
+OBJECT DETECTION AND IDENTIFICATION:
+------------------------------------
+1.TaskManagement.
+2.Manager
+3.User
+4.Task

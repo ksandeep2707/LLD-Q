@@ -1,0 +1,24 @@
+SOLUTION:
+--------
+FLOW:
+-----
+Have one Observale/Subject->All other Obeserver will suscribe to this Subject-->
+Observable will update the stock price->All the Suscriber should be notified regarding the latest orice.
+
+REQUIREMENT GATHERING:
+----------------------
+1.Multiple users/Obeservers should be able to suscribe to investment Subject.
+2.Once the Stock price is changed, all the observers should be notified.
+3.Your code should be extensible, maintanable and readable.
+
+
+OBJECT DETECTION:
+-----------------
+Subject:
+    InvestementPlatformInterface.
+               |
+    investmentPlatformConcreate.
+Observer:
+    StockObserverInterfave.
+      -->SMSAlert
+      -->EmailAlert

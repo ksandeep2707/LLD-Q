@@ -1,0 +1,90 @@
+SOLID PRINCIPLES:
+Solid principles are five set of  design principles for writing
+        a.maintainable code
+        b.scalable code
+        c.clean code -- written based on the OOPS Principles.
+
+S-->Single Responsiblity Principle
+O-->Open for extension, closed for modification
+L--> Liskov Substitution Principle
+I--> Interface Segmentation principles
+D-->Dependency Inversion Principles
+
+
+1.Single Responsoblity Principle
+--------------------------------
+->One Class should have only(Single) one reason to change.
+->Reduce complexity and make code easy to maintain.
+//Examples are in code.
+
+
+NOTE:
+1.When you have java file with more the than one class and one class is public and have main method, then if you uses java file.java then your main method class should be at the top.
+    -->Solution to this is you can first compile java class to generate the .class file then run main class using java mainClass
+2.while running using java mainClass  we are not required to add .class at the end, java automatically adds .class to the name ans execute it.SO it you use mainClass.class the it will run mainClass.class.class 
+due to which you will get ClassNotFoundException.
+
+IMPORTANT TOPICS:
+RELATIONSHIPS:
+1.HAS-A-RELATIONSHIP:
+  a.Composition(Stong association)
+    -->if you have 2 class with composition relationship then i.e Container Class and Contained Class, then Contained Class cannot exist without Container Class.
+    Eg. 
+         class Engine{
+            void getCC();
+            void getSpeed();
+         }
+         class FourWheeler{
+            Engine engine;
+            FourWheeler()
+            {
+                this.engine=new Engine();//Strong relationship i.e composition means if i delete the FourWheeler object then it will also delete engine object as well, 
+                                           so engine object cannot exist without FourWheeler Object.
+
+            }
+         } 
+  b.Aggregation(Weak association)
+  -->Here the Contained Class can exist independent of Container Class.
+  Eg. class Book{
+        void getPAges();
+        void getAuthorName();
+      }
+      class Library{
+        List<Book> list;//Weak association
+        void addBook(Book book)
+        {
+            list.add(book)
+        }
+      }
+      //Even if we delete the Library Object still books can exist; We pass reference of Contained Object in case of Aggregation
+2.IS-A-RELAITONSHIP(INHERITENCE)
+
+
+2.OPEN FOR EXTENSION BUT CLOSED FOR MODIFICAITON
+------------------------------------------------
+--> When you have a requirment of adding some functionality on the top of the exiting code.
+--> IT is not recomanded to modfiy the existing class to new feature since that code is live ans tested so making changes to that class will result in lot of bugs in it.
+-->Its better to extend the live code and add functionility on the top of it.
+Example is in the code.
+
+
+3.L-LISKOV SUBSTITUTION PRINCIPLE
+---------------------------------
+->It says that in a program if you replace a object with its subtype , then the code should not break.
+-->In short your subclass should not retrirct the capablity of your parent class.
+Eg is in the code.
+
+4.INTERFACE SEGMENTATION PRINCIPLE
+----------------------------------
+->WHY?
+ -->The child class should only implements the method that he want and should not be bother to implement other funciton.
+ -->solution: Break the Interface into sub segments so that the chlid to each interface should implement the required functionality.
+ Eg. Eg is present in the code.
+
+5.DEPENDENCT INVERSION PRINCIPLE
+--------------------------------
+-->It says that the class should depends on interface rather than depending on concreate class.
+-->It helps to break tigh coupling between the classes.
+-->Eg are present in the code.
+-->It genrally convet the compostion to Aggregation using interfaces.
+-->The concrete class is highly dependent on the container class. This pricples helps to get reid of this.It becomes very difficult to scale the existing code.
