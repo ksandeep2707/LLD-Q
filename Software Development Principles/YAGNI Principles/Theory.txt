@@ -1,0 +1,13 @@
+YAGNI PRINCIPLE:
+---------------
+1.It stands for You Aren’t Gonna Need It.
+2.YAGNI means don’t add functionality until it’s actually needed.
+3.Key Idea: "Build only what is required right now."
+
+WHY YAGNI?
+---------
+1. Saves time and effort.
+2. Keeps the codebase clean and focused. not make the code base messy.
+3. Reduces the risk of bugs in unused code.
+4. Makes testing and maintenance easier.
+

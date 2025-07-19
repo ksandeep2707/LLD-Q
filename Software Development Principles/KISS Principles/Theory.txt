@@ -1,0 +1,11 @@
+KISS (Keep it simple, stupid) PRINCIPLE:
+----------------
+1.The KISS principle states that systems work best if they are kept simple rather than made complex.
+2. Don't over-engineer. Favor simple, readable, and maintainable solutions.
+
+WHY KISS?
+--------
+1.Easier to read, debug, and maintain.
+2.Reduces the risk of bugs and technical debt.
+3.Faster onboarding for new developers.
+

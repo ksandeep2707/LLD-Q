@@ -3,6 +3,7 @@ Solid principles are five set of  design principles for writing
         a.maintainable code
         b.scalable code
         c.clean code -- written based on the OOPS Principles.
+        d.readable code
 
 S-->Single Responsiblity Principle
 O-->Open for extension, closed for modification

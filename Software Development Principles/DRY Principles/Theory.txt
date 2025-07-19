@@ -1,0 +1,10 @@
+DRY PRINCIPLES
+--------------
+1.It stands for do not repeat your self.
+2. It is an software development principles which reduces code repeatation.
+
+WHY FOLLOW DRY?
+--------------
+1. Maintainablity:Fixes and updates are easiear and localized as make changes at single place is enough.
+2. Readability: Easier for you and others to understand.
+3. Testability: Resuable components/methods are easier to test in isolation.
