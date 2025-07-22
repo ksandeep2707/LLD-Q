@@ -1,0 +1,10 @@
+1. Make the variables as final which are immutable. 
+Ex:If itemId should never change after construction (which is usually the case for IDs), mark it final: 
+     private final String itemId;
+
+2.To create a custom exception in Java, you define a new class that extends either:
+   a.Exception (for checked exceptions), or
+   b.RuntimeException (for unchecked exceptions).
+
+   
+

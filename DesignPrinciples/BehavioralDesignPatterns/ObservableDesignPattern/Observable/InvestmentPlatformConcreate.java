@@ -1,6 +1,6 @@
-package DesignPrinciples.ObservableDesignPattern.Observable;
+package DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observable;
 
-import DesignPrinciples.ObservableDesignPattern.Observer.*;
+import DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observer.*;
 import java.util.*;
 
 public class InvestmentPlatformConcreate implements InvestementPlatformInterface {

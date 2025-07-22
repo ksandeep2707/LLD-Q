@@ -1,0 +1,52 @@
+STATE DESIGN PATTERN
+--------------------
+1. State design pattern is a behavioural design pattern that let an object change its behaviour (operations) when its internal state changes.
+2. It is called behavioural design pattern because the behaviour of the object is changing with respect to its internal state.
+
+WHEN TO GO FOR THIS DESIGN PATTERN:
+----------------------------------
+1. Object behavior depends on its internal state
+ --You notice the same object behaves differently at different times.
+
+2. You see long chains of if-else or switch statements based on state
+   --If your code looks like:
+   if (state == "DRAFT") {
+       // do something
+    } else if (state == "REVIEW") {
+      // do something else
+    }
+   Then it's a strong candidate for State Pattern.
+
+3. State transitions should be explicit and controlled
+ --You want to restrict which state can transition to another.
+ --Each state class can define its own valid transitions.
+
+4. You want to encapsulate each state's logic separately
+  --So that adding/modifying a state doesn’t affect the rest of the code.
+  --Helps in applying Single Responsibility Principle.
+
+SIMPLE EXAMPLE FOR THIS DESIGN PATTERN
+--------------------------------------
+A document in a workflow can be in Draft, Review, or Published state, and its actions like edit, submit, or publish depend on its current state.
+
+Consider a document that can be in one of the following states:
+    a.Draft
+    b.Review
+    c.Published
+
+Each state defines its own allowed operations:
+
+1.In Draft:
+ a.You can edit the document.
+ b.You can submit it for review.
+ c.You cannot publish directly.
+
+2.In Review:
+ a.You cannot edit the document.
+ b.You cannot resubmit (already under review).
+ c.You can publish it.
+
+3.In Published:
+ a.You cannot edit, submit, or republish.
+ b.It is considered final.
+

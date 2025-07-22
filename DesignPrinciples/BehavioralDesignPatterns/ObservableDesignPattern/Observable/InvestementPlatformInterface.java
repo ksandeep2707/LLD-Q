@@ -1,6 +1,6 @@
-package DesignPrinciples.ObservableDesignPattern.Observable;
+package DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observable;
 
-import DesignPrinciples.ObservableDesignPattern.Observer.StockObserverInterface;
+import DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observer.StockObserverInterface;
 
 public interface InvestementPlatformInterface {
      public void addObserver(StockObserverInterface obr);

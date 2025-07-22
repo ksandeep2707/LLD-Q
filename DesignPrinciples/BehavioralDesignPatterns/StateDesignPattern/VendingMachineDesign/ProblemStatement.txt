@@ -1,0 +1,56 @@
+Problem Statement (as given in an interview):
+--------------------------------------------
+
+1.Design a Vending Machine system.
+2.The vending machine should:
+3.Accept coins or notes.
+4.Allow users to select items (e.g., chips, soda, candy).
+5.Dispense the selected item if payment is sufficient.
+6.Return change if necessary.
+7.Allow canceling the request and return the inserted money.
+
+You should also handle internal operations like:
+  a.Refilling items.
+  b.Showing item availability.
+  c.Handling out-of-stock scenarios.
+  d.Maintenance mode (e.g., when machine is not in service).
+
+Bonus: Think about applying design patterns like State, Strategy, or Factory where appropriate.
+
+
+
+State Daigram:
+
+        +-----------+
+        |   Idle    |
+        +-----------+
+             |
+      insertMoney
+             v
+     +----------------+
+     |   HasMoney     |
+     +----------------+
+        |       |
+   select    cancel
+     |         |
+     v         v
++-------------+   |
+|  Selection  |   |
++-------------+   |
+     | confirm     |
+     v             |
++-------------+    |
+|  Dispense   |    |
++-------------+    |
+     |             |
+     v             |
+  if balance>0     |
++-------------+    |
+|   Refund    | <---
++-------------+
+     |
+     v
++-----------+
+|   Idle    |
++-----------+
+

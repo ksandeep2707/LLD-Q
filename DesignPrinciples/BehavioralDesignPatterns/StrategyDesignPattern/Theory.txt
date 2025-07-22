@@ -1,0 +1,10 @@
+STRATEGY DESIGN PATTERN
+-----------------------
+1.It is an behavioural design pattern which defines family of algorithm and then them avaliable at runtime.
+
+WHY IT IS CALLED BEHAVIORAL DESIGN PATTERN:
+-------------------------------------------
+1. We come ot know able the behaviour of an person when we interact with them.SO the behavioural design pattern deal with the interaction between the object or communication betwen the object.
+2.A design pattern which controll the behaviour of the object.
+3.It is called behavioural because the behaviour of the objet changes based on the strategy it is using.
+4. It defines the behaviour of particular object

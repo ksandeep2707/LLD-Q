@@ -1,0 +1,14 @@
+BEHAVIORAL DESIGN PATTERN
+-------------------------
+1.There is multiple defination of this pattern.
+   a. If in your desing pattern behaviour of the object is changint at runtime then it is called behavioural design pattern. (EX. Strategy design Pattern)
+   b. IF in your desgin pattern involves interation between to acehive an goal than also it is called behavioural desgin pattern. (EX. observer desgin pattern. Here the objects, i.e observer and observable interacts to achive exchange of data at On update of data.);
+
+OBERVER DESIGN PATTERN
+----------------------
+1.We go for this patter when we have requirement that we have subject and others are suscribing to this subject called observer.
+2.Oberver should suscribe to this Observable or Suject.
+3.Observable will notify all the Observers on any modiciation of the property to this observers have suscribed.
+Example:
+   Stock Update/Notification to all the suscriber.
+

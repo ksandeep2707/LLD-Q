@@ -1,0 +1,203 @@
+PACKAGE:
+--------
+The package statement at the top of a Java class defines which package the class belongs to
+
+IMPORTANCE OF PACKAGE
+---------------------
+1. Organizes Code: Groups related classes like folders.
+    → Example: package com.bank.transaction;
+2.Avoids Name Conflicts: Same class names can exist in different packages.
+3.Controls Access: Default access restricts use to the same package.
+4.Helps Build Tools & IDEs: Tools like Maven/IDE use it to manage code structure.
+5.Supports Modular Design: Makes code easier to test, reuse, and maintain.
+
+CAN WE DIRECTLY RUN THE MAIN.JAVA FROM A PACKAGE?
+-------------------------------------------------
+1.To execute a Java project with a package and import statement, you should not run it as java Main.java directly if it has a package declaration.
+2.When a package is declared, the class must be run with its package name. (So java Main.java will not work it need whole location of Main.java from root dir of project. eg java com.stock.Main
+)
+
+WHY JAVA MAIN.JAVA FAILS WITH PACKAGE?
+--------------------------------------
+Case 1: Without package
+-----------------------
+File: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("No package here!");
+    }
+}
+
+You can run this easily:
+javac Main.java
+java Main
+
+Case 2: With package
+--------------------
+File: com/stock/Main.java
+
+package com.stock;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Inside a package!");
+    }
+}
+
+Now if you try:
+---------------
+
+javac Main.java
+java Main
+
+It will not work why?
+  a.Main.java is in a package (com.stock)
+  b.Java expects the folder structure to match the package
+  c.You’re compiling and running it as if there’s no package
+
+Correct Way:-
+-----------
+1.Compile:
+From the root folder (the one that contains com folder):
+javac com/stock/Main.java
+
+2.Run:
+Still from the root folder:
+java com.stock.Main
+
+
+Why this is required?
+---------------------
+Because of the package com.stock; line at the top:
+  a.Java expects the class to be in folder com/stock
+  b.The compiled class will be in com/stock/Main.class
+  c.Java needs full package name to find and run the class
+
+Conclusion:
+-----------
+1.If a class has a package, it must be compiled from its root directory.
+2.Use javac com/stock/Main.java to compile.
+3.Run using fully qualified name: java com.stock.Main
+4.You cannot run java Main or java Main.java when package is used.
+
+
+WHY ARE .CLASS FILES ARE CREATED FOR THE SUBPACKAGES WHEN I COMPILE ONLY MAIN FILE?
+----------------------------------------------------------------------------------
+1.When you compile StockAlertSystem.java, Java sees that it depends on Observer.java and compiles it too automatically.
+
+Case A: When You Compile Only StockAlertSystem.java From Inside the Folder
+--------------------------------------------------------------------------
+cd DesignPrinciples/BehavioralDesignPatterns/ObservableDesignPattern/StockNotificationSystem
+javac StockAlertSystem.java
+
+Here, Java only sees StockAlertSystem.java — not the dependent .java files from other packages, unless:
+      a.They are already compiled (.class present), or
+      b.You explicitly tell javac to compile them too.
+
+So, you get "cannot find symbol" errors for dependencies.Since the .class files for its dependents doesnot exit.
+
+Case B: When You Compile From Root With Full Path
+-------------------------------------------------
+javac DesignPrinciples/BehavioralDesignPatterns/ObservableDesignPattern/StockNotificationSystem/StockAlertSystem.java
+
+Now:
+   a.javac knows the full package structure.
+   b.It reads the package lines.
+
+And it can automatically locate and compile the other .java files in the same or related packages (if they're needed).
+But this auto-compilation only happens when Java has full visibility of the folder structure, typically from root.
+
+
+
+NOTE ABOUT IMPORT PACKAGE:--
+--------------------------
+1. When you import whole  package using * only its file/classes in the mentioned package are imported all its subpackages are not imported.
+
+
+
+HOW ENUM GET INITIALISED WITHOUT CREATING OBJECT:-
+--------------------------------------------------
+When you write:
+
+public enum Coin {
+    PENNY(1),
+    NICKEL(5),
+    DIME(10);
+    
+    private final int value;
+
+    Coin(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+}
+
+Java automatically calls the constructor for each enum value exactly once. Conceptually, it behaves like:
+
+public final class Coin extends java.lang.Enum<Coin> {
+    public static final Coin PENNY = new Coin("PENNY", 0, 1);
+    public static final Coin NICKEL = new Coin("NICKEL", 1, 5);
+    public static final Coin DIME = new Coin("DIME", 2, 10);
+
+    private final int value;
+
+    private Coin(String name, int ordinal, int value) {
+        super(name, ordinal);
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public static Coin[] values() { ... }
+
+    public static Coin valueOf(String name) { ... }
+}
+
+NOTE: Once the enum is loaded, static control flow is executed — first the initialization of static variables (i.e., the enum constants), followed by the execution of any static blocks. 
+The enum instances are automatically created and are directly accessible because they are implicitly public static final.
+
+
+
+WHY CONSTRUCTOR IN ENUM ARE PRIVATE BY PRIVATE?
+-----------------------------------------------
+In Java, the constructor of an enum must be private or package-private (i.e., default). 
+But even if you don’t explicitly mark it as private, the Java compiler makes it implicitly private. 
+
+Here's why:
+
+1. Controlled Instantiation
+   Java enums are designed to be singleton-like: each value (like PENNY, DIME, etc.) is a predefined constant. 
+   You cannot (and should not) create new instances of enum types at runtime.
+
+2. Compiler Enforcement
+When you define:
+
+ enum Coin {
+     PENNY(1), DIME(10);
+ }
+ the compiler generates code like:
+
+   public static final Coin PENNY = new Coin(1);
+   public static final Coin DIME = new Coin(10);
+
+ So all instances are created internally by the enum type, and no more can be created outside.
+
+3.Immutability and Safety
+ By keeping enum constructors private, Java ensures the list of enum values is fixed, and code elsewhere can’t instantiate rogue enum instances, keeping switch-case and logic safe.
+
+ NOTE:-
+
+ java.lang.Object
+  └── java.lang.Throwable
+        ├── java.lang.Error           // Serious JVM errors
+        └── java.lang.Exception       // Checked exceptions
+              └── java.lang.RuntimeException  // Unchecked exceptions
+
+
+

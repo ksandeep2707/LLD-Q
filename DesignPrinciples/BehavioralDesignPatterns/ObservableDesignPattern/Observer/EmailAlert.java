@@ -1,6 +1,6 @@
-package DesignPrinciples.ObservableDesignPattern.Observer;
+package DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observer;
 
-import DesignPrinciples.ObservableDesignPattern.Observable.InvestementPlatformInterface;
+import DesignPrinciples.BehavioralDesignPatterns.ObservableDesignPattern.Observable.InvestementPlatformInterface;
 
 public class EmailAlert implements StockObserverInterface {
     InvestementPlatformInterface observable;
