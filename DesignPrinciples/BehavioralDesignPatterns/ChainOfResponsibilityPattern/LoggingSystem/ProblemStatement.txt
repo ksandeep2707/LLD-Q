@@ -1,0 +1,32 @@
+Problem Statement: Design Logging System
+----------------------------------------
+You are designing a flexible logging system where logs can be handled by different loggers based on their severity.
+
+There are three types of log levels:
+ a.INFO
+ b.DEBUG
+ c.ERROR
+
+Each logger can:
+ 1.Handle a specific log level.
+ 2.Forward the request to the next logger in the chain.
+
+Requirements:
+ 1.Implement a chain of loggers such that:
+    a.INFO messages are handled by the ConsoleLogger.
+    b.DEBUG messages are handled by the FileLogger.
+    c.ERROR messages are handled by the ErrorLogger.
+
+The log message should be processed by all appropriate loggers in the chain (not just the first one).
+You should be able to change the order or add/remove loggers without changing the client code.
+
+🧾 Input:
+The client will call:
+
+Logger loggerChain = getChainOfLoggers();
+loggerChain.logMessage(LogLevel.ERROR, "This is an error.");
+loggerChain.logMessage(LogLevel.INFO, "This is an info.");
+
+🔄 Output:
+Error Logger: This is an error.
+Console Logger: This is an info.

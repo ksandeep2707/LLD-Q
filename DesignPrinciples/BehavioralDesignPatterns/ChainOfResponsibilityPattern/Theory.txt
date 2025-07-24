@@ -1,0 +1,96 @@
+CHAIN OF RESPONSIBILTY PATTERN:
+------------------------------
+1. The Chain of Responsibility pattern is a behavioral design pattern that allows a request to be passed along a chain of handlers until one of them handles it.
+
+Structure:
+----------
+Client → Handler1 → Handler2 → Handler3 → ... → null
+
+Advantages
+----------
+1. Promotes loose coupling between sender and receiver.
+2. Makes the system more flexible to add/remove/modify handlers.
+
+
+EXAMPLE
+--------
+
+abstract class Handler {
+    protected Handler next;
+
+    public void setNext(Handler next) {
+        this.next = next;
+    }
+
+    public abstract void handleRequest(String request);
+}
+
+class AuthHandler extends Handler {
+    public void handleRequest(String request) {
+        if (request.equals("AUTH")) {
+            System.out.println("Handled by AuthHandler");
+        } else if (next != null) {
+            next.handleRequest(request);
+        }
+    }
+}
+
+class LogHandler extends Handler {
+    public void handleRequest(String request) {
+        if (request.equals("LOG")) {
+            System.out.println("Handled by LogHandler");
+        } else if (next != null) {
+            next.handleRequest(request);
+        }
+    }
+}
+
+class Client {
+    public static void main(String[] args) {
+        Handler auth = new AuthHandler();
+        Handler log = new LogHandler();
+
+        auth.setNext(log);
+
+        auth.handleRequest("LOG");  // Output: Handled by LogHandler
+        auth.handleRequest("AUTH"); // Output: Handled by AuthHandler
+    }
+}
+
+
+
+NOTE:
+----
+
+When you define an enum in Java like this:
+public enum LogLevel {
+    INFO,
+    DEBUG,
+    ERROR
+}
+
+Java automatically creates three singleton instances: LogLevel.INFO, LogLevel.DEBUG, and LogLevel.ERROR.
+
+public final class LogLevel extends Enum<LogLevel> {
+    public static final LogLevel INFO = new LogLevel("INFO", 0);
+    public static final LogLevel DEBUG = new LogLevel("DEBUG", 1);
+    public static final LogLevel ERROR = new LogLevel("ERROR", 2);
+
+    private static final LogLevel[] VALUES = {INFO, DEBUG, ERROR};
+
+    private LogLevel(String name, int ordinal) {
+        super(name, ordinal);
+    }
+
+    public static LogLevel[] values() {
+        return VALUES.clone();
+    }
+
+    public static LogLevel valueOf(String name) {
+        for (LogLevel level : VALUES) {
+            if (level.name().equals(name)) return level;
+        }
+        throw new IllegalArgumentException("No enum constant " + name);
+    }
+}
+
